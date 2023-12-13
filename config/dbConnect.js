@@ -1,19 +1,11 @@
 import mongoose from "mongoose";
 
-const dbConnect =  () => {
+const dbConnect = () => {
   try {
-    mongoose.set("strictQuery", false);
-    const mongodbUrl = process.env.MONGODB_URL;
-    if (!mongodbUrl) {
-      throw new Error("Environment variable MONGODB_URL is not defined.");
-    }
-
-     mongoose.connect(mongodbUrl, {});
-    console.log("Database connection established.");
+    mongoose.connect(process.env.MONGODB_URL)
+    console.log("Database connected")
   } catch (error) {
-    if(error instanceof Error){
-        console.log(error.message);
-    }
+    console.log(error.message);
   }
 };
 
