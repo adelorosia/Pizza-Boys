@@ -7,3 +7,15 @@ export const getUsers = async (req, res) => {
     res.json(error);
   }
 };
+
+export const createUser = async (req, res) => {
+  const {firstName,lastName,email,password}=req.body
+  try {
+     await User.create({
+      firstName,lastName,email,password
+     })
+     res.json("successfully");
+  } catch (error) {
+    res.json(error);
+  }
+};
